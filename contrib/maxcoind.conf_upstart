@@ -1,0 +1,8 @@
+description "Headless maxcoind"
+author      "JWP"
+
+start on networking
+stop on shutdown
+
+
+exec maxcoind -conf=/etc/maxcoin/maxcoind.conf -datadir=/srv/maxcoin

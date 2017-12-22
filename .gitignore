@@ -48,12 +48,6 @@ src/qt/test/moc*.cpp
 *.json.h
 *.raw.h
 
-# Compilation and Qt preprocessor part
-*.qm
-Makefile
-maxcoin-qt
-MaxCoin-Qt.app
-
 # Unit-tests
 Makefile.test
 maxcoin-qt_test
