@@ -29,10 +29,9 @@ Forked from Bitcoin reference wallet 0.8.5 and Blakecoin
 Installation - Ubuntu 14.04
 -----
 
+```
 apt update && apt -y dist-upgrade
-
 apt install git-core build-essential libssl-dev libboost-{system,program_options,thread,filesystem}-dev libdb-dev libdb++-dev
-
 cd /usr/src
 git clone https://github.com/buckshee/maxcoin.git
 cd /usr/src/maxcoin/src/
@@ -42,14 +41,13 @@ useradd -m -r -d /srv/maxcoin maxcoind
 mkdir /etc/maxcoin
 ./maxcoind 2>&1 | egrep 'rpcuser=|rpcpassword=' | tee /etc/maxcoin/maxcoind.conf
 cp ../contrib/maxcoind.conf_upstart /etc/init/maxcoind.conf
-
+```
 
 For any user on the sytem an alias can be used to test completion
 
-alias climax='maxcoind -conf=/etc/maxcoin/maxcoind.conf'
+`alias climax='maxcoind -conf=/etc/maxcoin/maxcoind.conf'`
 
-climax getbalance
-climax get
+`climax getbalance`
 
 
 License
