@@ -43,11 +43,10 @@ mkdir /etc/maxcoin
 cp ../contrib/maxcoind.conf_upstart /etc/init/maxcoind.conf
 ```
 
-For any user on the sytem an alias can be used to test completion
+Compilation fails on OpenSSL 1.1, notes on code changes feathercoin and peercoin, may not be used any more in recent core versions
 
-`alias climax='maxcoind -conf=/etc/maxcoin/maxcoind.conf'`
-
-`climax getbalance`
+export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
+export CXXFLAGS+=" -I/usr/include/openssl-1.0"
 
 
 License
