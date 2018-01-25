@@ -31,7 +31,7 @@ Installation - Ubuntu 14.04
 
 ```
 apt update && apt -y dist-upgrade
-apt install git-core build-essential libssl-dev libboost-{system,program_options,thread,filesystem}-dev libdb-dev libdb++-dev
+apt install git-core build-essential libssl-dev libboost-{system,program-options,thread,filesystem}-dev libdb-dev libdb++-dev
 cd /usr/src
 git clone https://github.com/buckshee/maxcoin.git
 cd /usr/src/maxcoin/src/
@@ -43,11 +43,26 @@ mkdir /etc/maxcoin
 cp ../contrib/maxcoind.conf_upstart /etc/init/maxcoind.conf
 ```
 
-Compilation fails on OpenSSL 1.1, notes on code changes feathercoin and peercoin, may not be used any more in recent core versions
+Download a bootsrap file:
 
+`wget -O /var/lib/maxcoin/bootstrap.dat http://54.36.19.200/bootstrap.dat`
+
+
+To compile on systems with 1Gb RAM, try adding temporary swap:
+
+```
+fallocate -l 1G /.swapfile
+mkswap /.swapfile
+chmod 600 /.swapfile
+swapon /.swapfile
+```
+
+Compilation fails on OpenSSL 1.1, which is a problem for many non Ubuntu systems.
+
+```
 export LDFLAGS+=" -L/usr/lib/openssl-1.0 -lssl"
-export CXXFLAGS+=" -I/usr/include/openssl-1.0"
-
+export CPPFLAGS+=" -I/usr/include/openssl-1.0"
+```
 
 License
 ------
