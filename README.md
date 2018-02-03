@@ -31,7 +31,7 @@ Installation - Ubuntu 14.04
 
 ```
 apt update && apt -y dist-upgrade
-apt install git-core build-essential libssl-dev libboost-{system,program-options,thread,filesystem}-dev libdb-dev libdb++-dev
+apt install git-core build-essential libssl-dev libboost-{system,program-options,thread,filesystem}-dev libdb-dev libdb++-dev  libleveldb-dev
 cd /usr/src
 git clone https://github.com/buckshee/maxcoin.git
 cd /usr/src/maxcoin/src/
