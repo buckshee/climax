@@ -1,0 +1,16 @@
+[Unit]
+Description=Maxcoin currency daemon
+After=network.target
+
+[Service]
+User=maxcoind
+Group=maxcoind
+
+Type=forking
+#PIDFile=/run/maxcoind.pid
+ExecStart=/usr/bin/maxcoind -daemon -pid=/run/maxcoind.pid -conf=/etc/maxcoin/maxcoind.conf -datadir=/var/lib/maxcoin
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
