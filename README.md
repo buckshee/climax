@@ -26,7 +26,7 @@ Additional technical details can be found in the [Wiki](https://github.com/Max-C
 
 Forked from Bitcoin reference wallet 0.8.5 and Blakecoin
 
-Installation - Ubuntu 14.04
+Installation
 -----
 
 ```
@@ -37,10 +37,13 @@ git clone https://github.com/buckshee/maxcoin.git
 cd /usr/src/maxcoin/src/
 make
 cp maxcoind /usr/local/bin
-useradd -m -r -d /srv/maxcoin maxcoind
+mkdir /var/lib/maxcoin
+useradd -r -d /var/lib/maxcoin maxcoind
+chown -R maxcoind:maxcoind /var/lib/maxcoin
 mkdir /etc/maxcoin
 ./maxcoind 2>&1 | egrep 'rpcuser=|rpcpassword=' | tee /etc/maxcoin/maxcoind.conf
-cp ../contrib/maxcoind.conf_upstart /etc/init/maxcoind.conf
+cp ../contrib/maxcoind.service /etc/systemd/system/
+systemctl enable maxcoind
 ```
 
 Download a bootsrap file:
