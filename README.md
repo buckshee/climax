@@ -29,6 +29,8 @@ Forked from Bitcoin reference wallet 0.8.5 and Blakecoin
 Installation
 -----
 
+Debian 9 zlib1g-dev libssl1.0-dev
+
 ```
 apt update && apt -y dist-upgrade
 apt install git-core build-essential libssl-dev libboost-{system,program-options,thread,filesystem}-dev libdb-dev libdb++-dev  libleveldb-dev
@@ -45,11 +47,6 @@ mkdir /etc/maxcoin
 cp ../contrib/maxcoind.service /etc/systemd/system/
 systemctl enable maxcoind
 ```
-
-Download a bootsrap file:
-
-`wget -O /var/lib/maxcoin/bootstrap.dat http://54.36.19.200/bootstrap.dat`
-
 
 To compile on systems with 1Gb RAM, try adding temporary swap:
 
