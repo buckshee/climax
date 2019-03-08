@@ -3,7 +3,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "alert.h"
 #include "net.h"
 #include "bitcoinrpc.h"
 #include "base58.h"
@@ -243,11 +242,5 @@ Value makekeypair(const Array& params, bool fHelp)
     Object result;
     result.push_back(Pair("PublicKey",  HexStr(vchPubKey)));
     result.push_back(Pair("PrivateKey", CBitcoinSecret(secretKey, isCompressed).ToString()));
-    return result;
-}
-
-Value sendalert(const Array& params, bool fHelp)
-{
-    Object result;
     return result;
 }

@@ -264,10 +264,6 @@ static const CRPCCommand vRPCCommands[] =
     { "lockunspent",            &lockunspent,            false,     false },
     { "listlockunspent",        &listlockunspent,        false,     false },
     { "makekeypair",            &makekeypair,            true,      false },
-    { "getcheckpoint",          &getcheckpoint,          true,      false },
-    { "sendcheckpoint",         &sendcheckpoint,         true,      false },
-    { "enforcecheckpoint",      &enforcecheckpoint,      true,      false },
-    { "resetcheckpoint",        &resetcheckpoint,        true,      false },
 };
 
 CRPCTable::CRPCTable()
@@ -1029,12 +1025,6 @@ json_spirit::Value CRPCTable::execute(const std::string &strMethod, const json_s
     if (!pcmd)
         throw JSONRPCError(RPC_METHOD_NOT_FOUND, "Method not found");
 
-    // Observe safe mode
-    string strWarning = GetWarnings("rpc");
-    if (strWarning != "" && !GetBoolArg("-disablesafemode") &&
-        !pcmd->okSafeMode)
-        throw JSONRPCError(RPC_FORBIDDEN_BY_SAFE_MODE, string("Safe mode: ") + strWarning);
-
     try
     {
         // Execute
@@ -1193,7 +1183,6 @@ Array RPCConvertValues(const std::string &strMethod, const std::vector<std::stri
     if (strMethod == "lockunspent"            && n > 0) ConvertTo<bool>(params[0]);
     if (strMethod == "lockunspent"            && n > 1) ConvertTo<Array>(params[1]);
     if (strMethod == "importprivkey"          && n > 2) ConvertTo<bool>(params[2]);
-    if (strMethod == "enforcecheckpoint"      && n > 0) ConvertTo<bool>(params[0]);
 
     return params;
 }

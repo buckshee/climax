@@ -104,7 +104,7 @@ DEBUGFLAGS=-g
 
 # CXXFLAGS can be specified on the make command line, so we use xCXXFLAGS that only
 # adds some defaults in front. Unfortunately, CXXFLAGS=... $(CXXFLAGS) does not work.
-xCXXFLAGS=-O2 -std=c++11 -pthread -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wno-unused-variable \
+xCXXFLAGS=-O2 -std=c++11 -pthread -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wno-unused-variable -Wno-deprecated-declarations -Wno-literal-suffix -Wno-unused-function -Wno-extra
 #xCXXFLAGS=-O2 -pthread -Wall -Wextra -Wformat -Wformat-security -Wno-unused-parameter -Wno-unused-variable \
     $(DEBUGFLAGS) $(DEFS) $(HARDENING) $(CXXFLAGS)
 
@@ -115,7 +115,6 @@ xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 OBJS= \
     cryptopp/libcryptopp.a \
     leveldb/libleveldb.a \
-    obj/alert.o \
     obj/version.o \
     obj/checkpoints.o \
     obj/netbase.o \
@@ -145,9 +144,7 @@ OBJS= \
     obj/noui.o \
     obj/leveldb.o \
     obj/txdb.o \
-    obj/keccak.o \
-    obj/checkpointsync.o
-
+    obj/keccak.o
 
 all: obj maxcoind
 

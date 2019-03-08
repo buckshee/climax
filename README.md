@@ -22,10 +22,6 @@ Modifications to the RPC API
 + makekeypair [hex-encoded prefix]
 + dumppubkey <maxcoinaddress>
 
-Additional technical details can be found in the [Wiki](https://github.com/Max-Coin/maxcoin/wiki/_pages).
-
-Forked from Bitcoin reference wallet 0.8.5 and Blakecoin
-
 Installation
 -----
 
@@ -35,9 +31,10 @@ Debian 9 zlib1g-dev libssl1.0-dev
 apt update && apt -y dist-upgrade
 apt install git-core build-essential libssl-dev libboost-{system,program-options,thread,filesystem}-dev libdb-dev libdb++-dev  libleveldb-dev
 cd /usr/src
-git clone https://github.com/buckshee/maxcoin.git
-cd /usr/src/maxcoin/src/
+<clone the repo>
+cd /usr/src/climax
 make
+strip maxcoind
 cp maxcoind /usr/local/bin
 mkdir /var/lib/maxcoin
 useradd -r -d /var/lib/maxcoin maxcoind
